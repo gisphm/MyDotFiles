@@ -1,0 +1,78 @@
+[user]
+	name = gisphm
+	email = phmfk@hotmail.com
+	signingkey = 3572FFB4
+[color]
+	ui = always
+	branch = always
+	status = always
+	diff = always
+	interactive = always
+	pager = yes
+[core]
+	editor = vim
+	quotepath = false
+	pager = less -FRSX
+	whitespace = indent-with-non-tab,blank-at-eol,blank-at-eof,cr-at-eol
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = true
+[help]
+	autocorrect = 1
+[color "decorate"]
+	HEAD = green
+	branch = blink cyan magenta
+	stash = yellow
+	tag = magenta
+	remoteBranch = blue
+[alias]
+	co = checkout
+	cs = commit -s -S
+	st = status
+	hist = log --pretty=format:\"%C(auto) %h %G? %ad | %s%d [%an]\" --graph --date=short
+	rc = rm --cached
+	rank = shortlog -sn --no-merges
+	amend = commit --amend
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	sb = status -sb
+	me = config user.name
+	ci = commit
+	cm = checkout master
+	cd = checkout develop
+	pm = push -u origin master
+	pd = push -u origin develop
+	fe = fetch origin
+	hier = log --all --graph --decorate --oneline --simplify-by-decoration
+	ready = rebase -i @{u}
+	ls = log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate
+	la = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat
+	lnc = log --pretty=format:\"%h\\\\ %s\\\\ [%cn]\"
+	lds = log --pretty=format:\"%C(yellow)%h\\\\ %ad%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --date=short
+	le = log --oneline --decorate
+	ld = log --pretty=format:\"%C(yellow)%h\\\\ %ad%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --date=relative
+	fl = log -u
+	dl = !git la -1
+	dlc = diff --cached HEAD^
+	find = !git ls-files | grep -i
+	rh = reset --hard
+	sl = stash list
+	top = rev-parse --show-toplevel
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = "red "
+	updated = magenta dim
+[color "branch"]
+	current = magenta dim
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow
+	frag = magenta cyan
+	old = red
+	new = green
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
