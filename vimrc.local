@@ -66,14 +66,6 @@ let g:user_emmet_settings = {
             \ },
             \ }
 
-" vim-go settings
-let g:go_fmt_command = "goimports"
-
-" vim-jsbeautify
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-
 " vim-rails
 let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
@@ -83,3 +75,6 @@ augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
+
+" Autoformat
+noremap <F3> :Autoformat<CR><CR>
