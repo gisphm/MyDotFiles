@@ -1,8 +1,3 @@
-UnBundle 'cespare/vim-toml'
-UnBundle 'tpope/vim-haml'
-UnBundle 'altercation/vim-colors-solarized'
-UnBundle 'mattn/gist-vim'
-
 Bundle 'tomtom/tcomment_vim'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'tpope/vim-endwise'
@@ -16,3 +11,4 @@ Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-rbenv'
 Bundle 'marijnh/tern_for_vim'
+Plugin 'idanarye/vim-merginal'

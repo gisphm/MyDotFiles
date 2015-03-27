@@ -1,0 +1,37 @@
+# HG changeset patch
+# Parent e19979c8a885edd099a8b08fb950826efe217c5e
+
+diff --git a/src/ops.c b/src/ops.c
+--- a/src/ops.c
++++ b/src/ops.c
+@@ -420,8 +420,7 @@ shift_block(oap, amount)
+ 	}
+ 	for ( ; vim_iswhite(*bd.textstart); )
+ 	{
+-	    /* TODO: is passing bd.textstart for start of the line OK? */
+-	    incr = lbr_chartabsize_adv(bd.textstart, &bd.textstart,
++	    incr = lbr_chartabsize_adv(oldp, &bd.textstart,
+ 						    (colnr_T)(bd.start_vcol));
+ 	    total += incr;
+ 	    bd.start_vcol += incr;
+@@ -482,7 +481,7 @@ shift_block(oap, amount)
+ 
+ 	while (vim_iswhite(*non_white))
+ 	{
+-	    incr = lbr_chartabsize_adv(bd.textstart, &non_white, non_white_col);
++	    incr = lbr_chartabsize_adv(oldp, &non_white, non_white_col);
+ 	    non_white_col += incr;
+ 	}
+ 
+@@ -507,10 +506,7 @@ shift_block(oap, amount)
+ 	    verbatim_copy_width -= bd.start_char_vcols;
+ 	while (verbatim_copy_width < destination_col)
+ 	{
+-	    char_u *line = verbatim_copy_end;
+-
+-	    /* TODO: is passing verbatim_copy_end for start of the line OK? */
+-	    incr = lbr_chartabsize(line, verbatim_copy_end,
++	    incr = lbr_chartabsize(oldp, bd.textstart,
+ 							 verbatim_copy_width);
+ 	    if (verbatim_copy_width + incr > destination_col)
+ 		break;
