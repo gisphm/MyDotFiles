@@ -1,7 +1,7 @@
 [user]
 	name = gisphm
 	email = phmfk@hotmail.com
-	signingkey = 3572FFB4
+	signingkey = 912C3039
 [color]
 	ui = always
 	branch = always
@@ -29,6 +29,7 @@
 [alias]
 	co = checkout
 	cs = commit -s -S
+	csa = commit -s -S -a
 	st = status
 	hist = log --pretty=format:\"%C(auto) %h %G? %ad | %s%d [%an]\" --graph --date=short
 	rc = rm --cached
