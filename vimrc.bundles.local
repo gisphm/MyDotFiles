@@ -1,3 +1,7 @@
+UnBundle 'mattn/webapi-vim'
+UnBundle 'mattn/gist-vim'
+UnBundle 'rust-lang/rust.vim'
+
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'tpope/vim-endwise'
