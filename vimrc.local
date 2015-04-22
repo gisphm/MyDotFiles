@@ -38,10 +38,6 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-let g:rubycomplete_load_gemfile = 1
 
 " tidy whitespace
 function! Preserve(command)
@@ -68,6 +64,8 @@ let g:user_emmet_settings = {
 
 " vim-rails
 let g:rubycomplete_rails = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " flavored-markdown
