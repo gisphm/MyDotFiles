@@ -9,6 +9,7 @@ export LANG=zh_CN.UTF-8
 
 export VIM_HOME=$HOME/tools/vim
 export IOJS_HOME=$HOME/tools/iojs
+export ZSHHIGHLIGHT=/usr/share/zsh/plugins/zsh-syntax-highlighting
 export PATH=$VIM_HOME/bin:$IOJS_HOME/bin:$PATH
 export MANPATH=$VIM_HOME/share/man:$IOJS_HOME/share/man:$MANPATH
 
@@ -25,3 +26,4 @@ export RI="--format ansi --width 70"
 
 export rvm_ignore_gemrc_issues=1
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -f $ZSHHIGHLIGHT/zsh-syntax-highlighting.zsh ]] && source $ZSHHIGHLIGHT/zsh-syntax-highlighting.zsh
