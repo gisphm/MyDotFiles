@@ -76,3 +76,6 @@ augroup END
 
 " Autoformat
 noremap <F3> :Autoformat<CR><CR>
+
+" Exit all
+nnoremap <unique> <silent> <Leader>bd :EXbd<CR>

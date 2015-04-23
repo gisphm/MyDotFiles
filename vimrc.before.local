@@ -1,2 +1,2 @@
-let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'ruby', 'html', 'javascript', 'misc',]
-let g:spf13_leader='\'
+let g:spf13_bundle_groups = ['general', 'writing', 'neocomplete', 'programming', 'ruby', 'html', 'javascript', 'misc',]
+let g:spf13_leader = ';'
