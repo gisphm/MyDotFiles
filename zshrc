@@ -12,12 +12,13 @@ export IOJS_HOME=$HOME/tools/iojs
 export PATH=$VIM_HOME/bin:$IOJS_HOME/bin:$PATH
 export MANPATH=$VIM_HOME/share/man:$IOJS_HOME/share/man:$PATH
 
-eval `keychain --agents ssh,gpg --eval id_github B47F1906 --quiet`
 export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
 export GPG_TTY=$(tty)
 export PINENTRY_BINARY="/usr/bin/pinentry-curses"
+eval `keychain --agents ssh,gpg --eval id_github B47F1906 --quiet`
+
 export TERM=xterm-256color
 
 export RI="--format ansi --width 70"
