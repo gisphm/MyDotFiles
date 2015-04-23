@@ -10,7 +10,7 @@ export LANG=zh_CN.UTF-8
 export VIM_HOME=$HOME/tools/vim
 export IOJS_HOME=$HOME/tools/iojs
 export PATH=$VIM_HOME/bin:$IOJS_HOME/bin:$PATH
-export MANPATH=$VIM_HOME/share/man:$IOJS_HOME/share/man:$PATH
+export MANPATH=$VIM_HOME/share/man:$IOJS_HOME/share/man:$MANPATH
 
 export GIT_EDITOR=vim
 export VISUAL=vim
