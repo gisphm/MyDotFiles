@@ -5,12 +5,15 @@ plugins=(git git-flow-avh \
     per-directory-history history-substring-search \
     tmux colored-man)
 source $ZSH/oh-my-zsh.sh
-export LANG=zh_CN.UTF-8
+export LANG=en_US.UTF-8
 
+export GOROOT=$HOME/tools/go
+export GOPATH=$HOME/go
+export NEOVIM_HOME=$HOME/tools/neovim
 export VIM_HOME=$HOME/tools/vim
 export IOJS_HOME=$HOME/tools/iojs
 export ZSHHIGHLIGHT=/usr/share/zsh/plugins/zsh-syntax-highlighting
-export PATH=$VIM_HOME/bin:$IOJS_HOME/bin:$PATH
+export PATH=$GOROOT/bin:$GOPATH/bin:$VIM_HOME/bin:$NEOVIM_HOME/bin:$IOJS_HOME/bin:$PATH
 export MANPATH=$VIM_HOME/share/man:$IOJS_HOME/share/man:$MANPATH
 
 export GIT_EDITOR=vim
