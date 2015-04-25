@@ -1,6 +1,11 @@
 if (( $+commands[fortune] )); then
     if [[ -t 0 || -t 1 ]]; then
-        fortune -s | cowsay -f $(ls /usr/share/cows/ | shuf -n1)
+        if [[ -n "$TMUX" ]]; then
+            fortune -s
+            print
+        else
+            fortune -s | cowsay -f $(ls /usr/share/cows/ | shuf -n1)
+        fi
     fi
 fi
 

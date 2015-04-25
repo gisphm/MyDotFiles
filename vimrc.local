@@ -96,10 +96,11 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby EmmetInstall
 
 " vim-rails
-let g:rubycomplete_rails = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
+autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
 
 " flavored-markdown
 augroup markdown
@@ -112,3 +113,7 @@ noremap <F3> :Autoformat<CR><CR>
 
 " Exit all
 nnoremap <unique> <silent> <Leader>bd :EXbd<CR>
+
+" SemanticHighlight Settings
+nnoremap <Leader>sh :SemanticHighlightToggle<cr>
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
