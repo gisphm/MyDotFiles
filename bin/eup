@@ -1,0 +1,5 @@
+#!/bin/sh
+cd $HOME/.emacs.d
+git checkout develop -f
+cd $HOME
+emacs

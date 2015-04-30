@@ -1,5 +1,5 @@
 #!/bin/sh
 emacsclient -e '(kill-emacs)'
 cd $HOME/.emacs.d/
-git co develop -f
+git checkout develop -f
 cd $HOME
