@@ -1,0 +1,5 @@
+#!/bin/sh
+emacsclient -e '(kill-emacs)'
+cd $HOME/.emacs.d/
+git co develop -f
+cd $HOME

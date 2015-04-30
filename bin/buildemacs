@@ -1,0 +1,20 @@
+#!/bin/sh
+cd $HOME/sources/emacs
+git checkout master -f
+git pull
+
+[[ -e Makefile ]] || ./autogen.sh && ./configure \
+    --build=x86_64-linux-gnu \
+    --host=x86_64-linux-gnu \
+    --target=x86_64-linux-gnu \
+    --prefix=$HOME/tools/emacs \
+    --without-x \
+    --without-gpm \
+    --without-file-notification \
+    --without-sound \
+    --without-dbus
+
+make bootstrap
+make
+make install
+cd
