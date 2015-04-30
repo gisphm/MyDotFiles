@@ -1,0 +1,24 @@
+From e5c6d5be5b68e51dff17cd176ee857cf283eb045 Mon Sep 17 00:00:00 2001
+From: gisphm <phmfk@hotmail.com>
+Date: Thu, 30 Apr 2015 12:48:14 +0000
+Subject: [PATCH 2/4] added a whitelisted_ip
+
+Signed-off-by: gisphm <phmfk@hotmail.com>
+---
+ config/application.rb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/application.rb b/config/application.rb
+index 65d3995..1b63f55 100644
+--- a/config/application.rb
++++ b/config/application.rb
+@@ -22,5 +22,6 @@ module AppOne
+ 
+     # Do not swallow errors in after_commit/after_rollback callbacks.
+     config.active_record.raise_in_transactional_callbacks = true
++    config.web_console.whitelisted_ips = '10.0.2.2'
+   end
+ end
+-- 
+2.3.7
+

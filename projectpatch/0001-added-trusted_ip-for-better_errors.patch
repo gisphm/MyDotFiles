@@ -1,0 +1,24 @@
+From b9011a08ea5109d7cebe31414662f15e74e3c921 Mon Sep 17 00:00:00 2001
+From: gisphm <phmfk@hotmail.com>
+Date: Thu, 30 Apr 2015 12:37:28 +0000
+Subject: [PATCH 1/4] added trusted_ip for better_errors
+
+Signed-off-by: gisphm <phmfk@hotmail.com>
+---
+ config/environments/development.rb | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config/environments/development.rb b/config/environments/development.rb
+index b55e214..b7153a3 100644
+--- a/config/environments/development.rb
++++ b/config/environments/development.rb
+@@ -38,4 +38,6 @@ Rails.application.configure do
+ 
+   # Raises error for missing translations
+   # config.action_view.raise_on_missing_translations = true
++
++  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+ end
+-- 
+2.3.7
+
