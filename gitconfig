@@ -59,11 +59,6 @@
 	rh = reset --hard
 	sl = stash list
 	top = rev-parse --show-toplevel
-	fid = flow init -d
-	ffc = flow feature create
-	fff = flow feature finish
-	ffl = flow feature finish
-	fif = flow init -f
 	as = am --signoff
 [color "status"]
 	added = green

@@ -114,3 +114,7 @@ noremap <F3> :Autoformat<CR><CR>
 " SemanticHighlight Settings
 nnoremap <Leader>sh :SemanticHighlightToggle<cr>
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+
+" Unite.vim mapping
+nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
+nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
