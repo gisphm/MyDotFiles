@@ -1,7 +1,7 @@
 [user]
 	name = gisphm
 	email = phmfk@hotmail.com
-	signingkey = 6BD21ED0
+	signingkey = B47F1906
 [color]
 	ui = always
 	branch = always
@@ -64,6 +64,7 @@
 	fff = flow feature finish
 	ffl = flow feature finish
 	fif = flow init -f
+	as = am --signoff
 [color "status"]
 	added = green
 	changed = yellow
