@@ -1,7 +1,9 @@
 UnBundle 'mattn/webapi-vim'
 UnBundle 'mattn/gist-vim'
 UnBundle 'rust-lang/rust.vim'
+UnBundle 'gorodinskiy/vim-coloresque'
 
+Plugin 'ap/vim-css-color'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'tpope/vim-endwise'

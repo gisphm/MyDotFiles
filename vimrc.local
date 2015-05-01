@@ -109,12 +109,26 @@ augroup markdown
 augroup END
 
 " Autoformat
-noremap <F3> :Autoformat<CR><CR>
+noremap <silent> <Space>f :Autoformat<CR>
 
 " SemanticHighlight Settings
 nnoremap <Leader>sh :SemanticHighlightToggle<cr>
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 " Unite.vim mapping
+call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
+call unite#custom#profile('files', 'filters', 'sorter_rank')
+let g:unite_prompt = '» '
+let g:unite_split_rule = 'botright'
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup -S -C4'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+let g:unite_source_history_yank_enable = 1
 nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
 nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+nnoremap <Leader>p :<C-u>Unite -winheight=10 -buffer-name=file file_rec/async<cr>
+nnoremap <Space>/ :Unite grep:.<CR>
+nnoremap <Space>s :<C-u>Unite -winheight=10 -buffer-name=buffer -quick-match buffer<cr>
+nnoremap <leader>y :<C-u>Unite -winheight=10 -buffer-name=yank history/yank<cr>
