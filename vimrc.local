@@ -132,3 +132,12 @@ nnoremap <Leader>p :<C-u>Unite -winheight=10 -buffer-name=file file_rec/async<cr
 nnoremap <Space>/ :Unite grep:.<CR>
 nnoremap <Space>s :<C-u>Unite -winheight=10 -buffer-name=buffer -quick-match buffer<cr>
 nnoremap <leader>y :<C-u>Unite -winheight=10 -buffer-name=yank history/yank<cr>
+
+" jshint2.vim settings
+let jshint2_command = '/home/vagrant/tools/iojs/bin/jshint'
+nnoremap <silent><Space>h :JSHint<CR>
+nnoremap <silent><Space>n :lnext<CR>
+nnoremap <silent><Space>p :lprevious<CR>
+vnoremap <silent><Space>h :JSHint<CR>
+vnoremap <silent><Space>n :lnext<CR>
+vnoremap <silent><Space>p :lprevious<CR>
