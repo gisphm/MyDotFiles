@@ -1,1 +1,7 @@
---quiet
+# Basic Options
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+--exclude=.svn
+--exclude=.hg
+--quiet=yes
