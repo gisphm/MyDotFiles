@@ -1,8 +1,18 @@
-" custom colorscheme
+" 文档说明 {{{
+" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 foldlevel=0 foldmethod=marker:
+" }}}
+
+" 主题 {{{
+
 colo molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 set tags+=gems.tags
 
-" airline settings
+" }}}
+
+" airline {{{
+
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
     if g:airline_theme == 'badwolf'
@@ -39,7 +49,10 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" tidy whitespace
+" }}}
+
+" whitespace {{{
+
 function! Preserve(command)
     let _s=@/
     let l = line(".")
@@ -51,7 +64,10 @@ endfunction
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap _= :call Preserve("normal gg=G")<CR>
 
-" emmet settings
+" }}}
+
+" emmet-vim {{{
+
 let g:user_emmet_settings = {
             \ 'variables' : {
             \   'lang' : 'en',
@@ -95,27 +111,42 @@ let g:user_emmet_settings = {
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,eruby EmmetInstall
 
-" vim-rails
+" }}}
+
+" vim-rails {{{
+
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
 autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
 
-" flavored-markdown
+" }}}
+
+" flavored-markdown {{{
+
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
-" Autoformat
+" }}}
+
+" Autoformat {{{
+
 noremap <silent> <Space>f :Autoformat<CR>
 
-" SemanticHighlight Settings
+" }}}
+
+" SemanticHighlight {{{
+
 nnoremap <Leader>sh :SemanticHighlightToggle<cr>
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
-" Unite.vim mapping
+" }}}
+
+" Unite.vim {{{
+
 call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
 call unite#custom#profile('files', 'filters', 'sorter_rank')
 let g:unite_prompt = '» '
@@ -132,8 +163,12 @@ nnoremap <Leader>p :<C-u>Unite -winheight=10 -buffer-name=file file_rec/async<cr
 nnoremap <Space>/ :Unite grep:.<CR>
 nnoremap <Space>s :<C-u>Unite -winheight=10 -buffer-name=buffer -quick-match buffer<cr>
 nnoremap <leader>y :<C-u>Unite -winheight=10 -buffer-name=yank history/yank<cr>
+nnoremap <Space>u :<C-u>Unite -winheight=10 -buffer-name=outline outline<CR>
 
-" jshint2.vim settings
+" }}}
+
+" jshint2.vim {{{
+
 let jshint2_command = '/home/vagrant/tools/iojs/bin/jshint'
 nnoremap <silent><Space>h :JSHint<CR>
 nnoremap <silent><Space>n :lnext<CR>
@@ -141,3 +176,5 @@ nnoremap <silent><Space>p :lprevious<CR>
 vnoremap <silent><Space>h :JSHint<CR>
 vnoremap <silent><Space>n :lnext<CR>
 vnoremap <silent><Space>p :lprevious<CR>
+
+" }}}
