@@ -1,0 +1,31 @@
+From 5c095708ba3c18c8825ad1a6ad063373e8b736ff Mon Sep 17 00:00:00 2001
+From: gisphm <phmfk@hotmail.com>
+Date: Thu, 30 Apr 2015 13:12:25 +0000
+Subject: [PATCH 4/4] added bullet gem config for development
+
+Signed-off-by: gisphm <phmfk@hotmail.com>
+---
+ config/environments/development.rb | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/config/environments/development.rb b/config/environments/development.rb
+index b7153a3..a3f38e7 100644
+--- a/config/environments/development.rb
++++ b/config/environments/development.rb
+@@ -40,4 +40,13 @@ Rails.application.configure do
+   # config.action_view.raise_on_missing_translations = true
+ 
+   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
++
++  config.after_initialize do
++    Bullet.enable = true
++    Bullet.alert = true
++    Bullet.bullet_logger = true
++    Bullet.console = true
++    Bullet.rails_logger = true
++    Bullet.add_footer = true
++  end
+ end
+-- 
+2.3.7
+

@@ -3,7 +3,8 @@ ZSH_THEME="phm"
 DISABLE_AUTO_UPDATE="true"
 plugins=(git git-flow-avh \
     per-directory-history history-substring-search \
-    tmux colored-man)
+    tmux colored-man \
+    rails rvm)
 source $ZSH/oh-my-zsh.sh
 
 eval `keychain --eval id_github --quiet`

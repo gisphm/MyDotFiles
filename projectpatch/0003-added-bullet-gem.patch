@@ -1,0 +1,56 @@
+From b8d78a6928f3448efc0e9c1e2051c8950a1a16a9 Mon Sep 17 00:00:00 2001
+From: gisphm <phmfk@hotmail.com>
+Date: Thu, 30 Apr 2015 12:54:18 +0000
+Subject: [PATCH 3/4] added bullet gem
+
+Signed-off-by: gisphm <phmfk@hotmail.com>
+---
+ Gemfile      | 1 +
+ Gemfile.lock | 5 +++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/Gemfile b/Gemfile
+index 8aa0061..c0bd162 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -12,6 +12,7 @@ gem 'bcrypt'
+ gem 'puma'
+ 
+ group :development do
++  gem 'bullet'
+   gem 'capistrano-rails'
+   gem 'did_you_mean'
+   gem 'better_errors'
+diff --git a/Gemfile.lock b/Gemfile.lock
+index 45c6fbb..63cbcb5 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -45,6 +45,9 @@ GEM
+     binding_of_caller (0.7.2)
+       debug_inspector (>= 0.0.1)
+     builder (3.2.2)
++    bullet (4.14.5)
++      activesupport (>= 3.0.0)
++      uniform_notifier (~> 1.9.0)
+     byebug (4.0.5)
+       columnize (= 0.9.0)
+     capistrano (3.4.0)
+@@ -199,6 +202,7 @@ GEM
+     uglifier (2.7.1)
+       execjs (>= 0.3.0)
+       json (>= 1.8.0)
++    uniform_notifier (1.9.0)
+     web-console (2.1.2)
+       activemodel (>= 4.0)
+       binding_of_caller (>= 0.7.2)
+@@ -212,6 +216,7 @@ DEPENDENCIES
+   bcrypt
+   better_errors
+   binding_of_caller
++  bullet
+   byebug
+   capistrano-rails
+   coffee-rails
+-- 
+2.3.7
+
