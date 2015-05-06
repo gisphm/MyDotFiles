@@ -1,0 +1,122 @@
+From 766ed2e66d7caceb12bfb3c2edac66e3115e63de Mon Sep 17 00:00:00 2001
+From: gisphm <phmfk@hotmail.com>
+Date: Wed, 6 May 2015 08:24:02 +0800
+Subject: [PATCH 1/2] added completeselect option
+
+Signed-off-by: gisphm <phmfk@hotmail.com>
+---
+ src/edit.c   | 42 ++++++++++++++++++++++++++++++++++++------
+ src/option.c |  2 +-
+ 2 files changed, 37 insertions(+), 7 deletions(-)
+
+diff --git a/src/edit.c b/src/edit.c
+index 76bfcfb..e36516e 100644
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -108,6 +108,12 @@ static char_u	  *compl_leader = NULL;
+ static int	  compl_get_longest = FALSE;	/* put longest common string
+ 						   in compl_leader */
+ 
++static int compl_no_insert = FALSE;             /* FALSE: select & insert
++                                                   TRUE: noinsert */
++
++static int compl_no_select = FALSE;             /* FALSE: select & insert
++                                                   TRUE: noselect */
++
+ static int	  compl_used_match;	/* Selected one of the matches.  When
+ 					   FALSE the match was edited or using
+ 					   the longest common string. */
+@@ -3655,8 +3661,24 @@ ins_compl_prep(c)
+     if (ctrl_x_mode == CTRL_X_NOT_DEFINED_YET
+ 				      || (ctrl_x_mode == 0 && !compl_started))
+     {
+-	compl_get_longest = (vim_strchr(p_cot, 'l') != NULL);
+-	compl_used_match = TRUE;
++        compl_get_longest = (strstr((char *)p_cot, "longest") != NULL);
++        compl_used_match = TRUE;
++
++        if (strstr((char *)p_cot, "noselect") != NULL)
++        {
++            compl_no_insert = FALSE;
++            compl_no_select = TRUE;
++        }
++        else if (strstr((char *)p_cot, "noinsert") != NULL)
++        {
++            compl_no_insert = TRUE;
++            compl_no_select = FALSE;
++        }
++        else
++        {
++            compl_no_insert = FALSE;
++            compl_no_select = FALSE;
++        }
+     }
+ 
+     if (ctrl_x_mode == CTRL_X_NOT_DEFINED_YET)
+@@ -4648,6 +4670,7 @@ ins_compl_next(allow_get_expansion, count, insert_match)
+     compl_T *found_compl = NULL;
+     int	    found_end = FALSE;
+     int	    advance;
++    int     started = compl_started;
+ 
+     /* When user complete function return -1 for findstart which is next
+      * time of 'always', compl_shown_match become NULL. */
+@@ -4729,7 +4752,7 @@ ins_compl_next(allow_get_expansion, count, insert_match)
+ 		return -1;
+ 	    }
+ 
+-	    if (advance)
++	    if (!compl_no_select && advance)
+ 	    {
+ 		if (compl_shows_dir == BACKWARD)
+ 		    --compl_pending;
+@@ -4781,7 +4804,11 @@ ins_compl_next(allow_get_expansion, count, insert_match)
+     }
+ 
+     /* Insert the text of the new completion, or the compl_leader. */
+-    if (insert_match)
++    if (compl_no_insert && !started) {
++         ins_bytes(compl_orig_text + ins_compl_len());
++         compl_used_match = FALSE;
++    }
++    else if (insert_match)
+     {
+ 	if (!compl_get_longest || compl_used_match)
+ 	    ins_compl_insert();
+@@ -4818,7 +4845,10 @@ ins_compl_next(allow_get_expansion, count, insert_match)
+ 
+     /* Enter will select a match when the match wasn't inserted and the popup
+      * menu is visible. */
+-    compl_enter_selects = !insert_match && compl_match_array != NULL;
++    if (compl_no_insert && !started)
++        compl_enter_selects = TRUE;
++    else
++        compl_enter_selects = !insert_match && compl_match_array != NULL;
+ 
+     /*
+      * Show the file name for the match (if any)
+@@ -4893,7 +4923,7 @@ ins_compl_check_keys(frequency)
+ 	    }
+ 	}
+     }
+-    if (compl_pending != 0 && !got_int)
++    if (compl_pending != 0 && !got_int && !compl_no_insert)
+     {
+ 	int todo = compl_pending > 0 ? compl_pending : -compl_pending;
+ 
+diff --git a/src/option.c b/src/option.c
+index 56d9493..04e5ca3 100644
+--- a/src/option.c
++++ b/src/option.c
+@@ -3039,7 +3039,7 @@ static char *(p_fdm_values[]) = {"manual", "expr", "marker", "indent", "syntax",
+ static char *(p_fcl_values[]) = {"all", NULL};
+ #endif
+ #ifdef FEAT_INS_EXPAND
+-static char *(p_cot_values[]) = {"menu", "menuone", "longest", "preview", NULL};
++static char *(p_cot_values[]) = {"menu", "menuone", "longest", "preview", "noinsert", "noselect", NULL};
+ #endif
+ 
+ static void set_option_default __ARGS((int, int opt_flags, int compatible));
+-- 
+2.3.7
+
