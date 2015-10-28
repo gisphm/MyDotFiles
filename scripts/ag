@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+AG_PATH=$HOME/src/ag
+TARGET=$HOME/tools
+
+[ -d $TARGET ] && rm -rf $TARGET
+
+cd $AG_PATH
+
+git clean -xdf
+
+git pull
+
+./build.sh --prefix=$TARGET
+
+make
+
+make install
+
+cd

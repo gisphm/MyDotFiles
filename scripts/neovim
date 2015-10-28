@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+NEOVIM_PATH=$HOME/src/neovim
+
+cd $NEOVIM_PATH
+
+make clean
+
+git pull
+
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$HOME/tools" install
+
+cd

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+TIG_PATH=$HOME/src/tig
+TARGET=$HOME/tools
+
+cd $TIG_PATH
+
+git clean -xdf
+git co master -f
+
+git pull
+
+./autogen.sh
+
+./configure --prefix=$TARGET
+
+make all doc-man
+
+make install install-doc-man
+
+cd

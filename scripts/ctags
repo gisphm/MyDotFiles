@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+CTAGS_PATH=$HOME/src/ctags
+TARGET=$HOME/tools
+
+cd $CTAGS_PATH
+
+git clean -xdf
+
+git pull
+
+autoreconf -v -f -i
+
+./configure --enable-iconv --prefix=$TARGET
+
+make
+
+make install
+
+cd

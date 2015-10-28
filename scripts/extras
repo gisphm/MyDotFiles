@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+EXTRAS_PATH=$HOME/src/extras
+TARGET=$HOME/tools
+
+cd $EXTRAS_PATH
+git pull
+
+sed -i '/GIT_EDITOR/d' bin/git-changelog
+sed -i '/bash_completion/d' Makefile
+
+make PREFIX=$TARGET install
+
+git checkout master -f
+
+cd

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+HW_PATH=$HOME/src/highway
+TARGET=$HOME/tools
+
+cd $HW_PATH
+
+git clean -xdf
+
+git pull
+
+autoreconf -v -f -i
+
+./configure --prefix=$TARGET
+
+make
+
+make install
+
+cd

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+GIT_PATH=$HOME/src/git
+TARGET=$HOME/tools
+
+cd $GIT_PATH
+
+git clean -xdf
+
+git co master -f
+
+git pull
+
+autoreconf -f -v -i
+
+./configure --prefix=$TARGET \
+    --without-tcltk \
+    --with-libpcre
+
+make all man
+
+make install install-man
+
+cd

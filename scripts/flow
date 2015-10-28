@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+FLOW_PATH=$HOME/src/flow
+TARGET=$HOME/tools
+
+cd $FLOW_PATH
+git pull
+
+make prefix=$TARGET install
+
+cd
