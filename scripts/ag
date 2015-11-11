@@ -3,8 +3,6 @@
 AG_PATH=$HOME/src/ag
 TARGET=$HOME/tools
 
-[ -d $TARGET ] && rm -rf $TARGET
-
 cd $AG_PATH
 
 git clean -xdf

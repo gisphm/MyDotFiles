@@ -14,3 +14,12 @@ make PREFIX=$TARGET install
 git checkout master -f
 
 cd
+
+cd $TARGET/bin
+
+sed -i '/is_git_repo()/, /is_git_repo/d' git-alias
+sed -i '/is_git_repo()/, /is_git_repo/d' git-extras
+sed -i '/is_git_repo()/, /is_git_repo/d' git-fork
+sed -i '/is_git_repo()/, /is_git_repo/d' git-setup
+
+cd

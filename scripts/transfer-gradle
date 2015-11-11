@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+FASTEXPORT=$HOME/src/fast-export
+GRADLEREPO=$HOME/src/gradle
+GRADLEGIT=$HOME/src/vim-gradle
+
+cd $FASTEXPORT
+git co master -f
+sed -i -e 's/python/python2/g' hg-fast-export.py hg-fast-export.sh
+
+cd $GRADLEREPO
+hg pull
+
+[[ -d $GRADLEGIT ]] && rm -rf $GRADLEGIT
+git init $GRADLEGIT
+
+cd $GRADLEGIT
+$FASTEXPORT/hg-fast-export.sh -r $GRADLEREPO --force -s --hgtags --hg-hash
+
+git co master -f
+
+git remote add origin git@github.com:gisphm/vim-gradle.git
+
+git push origin --mirror
+
+cd $FASTEXPORT
+git co master -f
+rm -rf $GRADLEGIT
+
+exit

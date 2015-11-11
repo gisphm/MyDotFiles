@@ -9,7 +9,7 @@ git clean -xdf
 git co master -f
 git pull
 
-./configure --prefix=$TARGET \
+CC=clang ./configure --prefix=$TARGET \
     --enable-pythoninterp=yes \
     --enable-luainterp=yes \
     --enable-rubyinterp=yes \
@@ -18,11 +18,15 @@ git pull
     --enable-multibyte \
     --enable-sniff \
     --disable-netbeans \
+    --with-features=huge \
     --with-compiledby="gisphm <phmfk@hotmail.com>" \
     --without-x \
-    --with-features=huge \
     --disable-gui \
-    --disable-gpm
+    --disable-gpm \
+    --enable-fail-if-missing
+    # --with-x \
+    # --enable-gui=gtk2 \
+    # --enable-gpm \
 
 VIMRUNTIMEDIR=$HOME/tools/share/vim/vim74 make -j8
 

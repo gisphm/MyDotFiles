@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+JQ_PATH=$HOME/src/jq
+TARGET=$HOME/tools
+
+cd $JQ_PATH
+
+git clean -xdf
+git co master -f
+git pull
+
+cd docs
+
+bundle install
+
+cd ../
+
+autoreconf -f -i -v
+./configure --prefix=$TARGET
+make -j8
+make install
+
+cd

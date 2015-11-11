@@ -15,9 +15,10 @@ autoreconf -f -v -i
 
 ./configure --prefix=$TARGET \
     --without-tcltk \
-    --with-libpcre
+    --with-libpcre \
+    --with-editor=vim
 
-make all man
+make -j8 all man
 
 make install install-man
 

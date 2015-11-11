@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+EMACS_PATH=$HOME/src/emacs
+TARGET=$HOME/tools
+
+cd $EMACS_PATH
+
+git clean -xdf
+git co master -f
+git pull
+
+./autogen.sh
+./configure --prefix=$TARGET --without-x --with-x-toolkit=no --without-sound --without-jpeg --without-gpm --without-dbus
+make -j8 boostrap
+make -j8
+make install
+
+exit
